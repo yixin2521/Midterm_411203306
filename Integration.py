@@ -53,6 +53,16 @@ def create_student():
 button_create = tk.Button(root, text='Create', command=create_student)
 button_create.pack(pady=20)
 
+def overview_student():
+    cursor.execute('SELECT * from DB_student')
+    overview = cursor.fetchall()
+    print (overview)
+
+# new botton Overview
+botton_overview = tk.Button(root, text='Overview', command=overview_student)
+botton_overview.pack(pady=25)
+
+
 # def a overview_student()
 # show all records in sqlite
 def delete_student():
