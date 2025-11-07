@@ -55,13 +55,16 @@ button_create.pack(pady=20)
 
 # def a overview_student()
 # show all records in sqlite
-def overview_student():
-    cursor.execute('SELECT * from DB_student')
-    overview = cursor.fetchall()
-    print (overview)
+def delete_student():
+    student_id = entry_id.get()
+    cursor.execute('SELECT * from DB_student where db_student_id = ?', (student_id,))
+    delete = cursor.fetchall()
+    cursor.execute('Delete from DB_student where db_student_id = ?', (student_id,))
+    print ('Following row is delete:', delete)
+    conn.commit()
 
 # new botton Overview
-botton_overview = tk.Button(root, text='Overview', command=overview_student)
-botton_overview.pack(pady=25)
+botton_remove = tk.Button(root, text='Remove', command=delete_student)
+botton_remove.pack(pady=25)
 
 root.mainloop() #must be put to the end of programming code
